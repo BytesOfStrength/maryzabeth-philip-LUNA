@@ -1,0 +1,73 @@
+body {
+  background-color: blanchedalmond;
+  color: mediumvioletred;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#About {
+  margin-block: 50px;
+  border: solid #ffcbe1 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+#Experience {
+  border: dashed #d6e5bd 10px;
+  border-bottom: solid #d6e5bd 10px;
+  padding: 30px;
+  margin-block: 50px;
+}
+
+#Connect {
+  border: solid #f9e1a8 10px;
+  border-block: solid 10px #ecb83f;
+  padding: 30px;
+  margin-block: 50px;
+}
+
+.my-name {
+  color: #68007a;
+  font-style: italic;
+  text-decoration: underline solid rgb(249, 132, 152);
+}
+nav li a:hover{
+  color:rgb(69, 222, 222);
+
+}
+
+nav ul li::marker{
+  color:#1b85d1;
+}
+
+h1 {
+  font-weight: lighter;
+  font-size: 3rem;
+  color: #36013f;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: rgb(254, 83, 111);
+}
+
+.experienceList li {
+  background-color: #bcd8ec;
+  padding: 20px;
+  border: solid 10px #1b85d1;
+  margin: 30px;
+}
+
+.connectList li {
+  background-color: lightblue;
+  padding: 20px;
+  border: solid 10px aliceblue;
+  margin: 30px;
+}
+.connectList li::marker {
+  content: "🙂";
+  font-size: 20px;
+}
+.connectList a:hover {
+  color: orangered;
+}
