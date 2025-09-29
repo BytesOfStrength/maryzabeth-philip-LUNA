@@ -23,6 +23,7 @@
             <li><a href="#Skills">Skills</a></li>
             <li><a href="#Projects">Projects</a></li>
             <li><a href="#Connect">Connect</a></li>
+            <li><a href="#leave-a-message">Leave a Message</a></li>
           </ul>
         </nav>
       </div>
@@ -204,7 +205,45 @@
           </li>
         </ul>
       </section>
+      <section id="leave-a-message">
+        <h2 id="leaveMsgHeading">Leave a Message</h2>
+        <form name="leave_message">
+          <label for="usersName">Username </label>
+          <input
+            type="text"
+            id="usersName"
+            name="usersName"
+            placeholder="First Name"
+            required
+          /><br />
+
+          <label for="usersEmail"> Your Email</label>
+          <input
+            type="email"
+            name="usersEmail"
+            id="usersEmail"
+            placeholder="Your Email Address"
+            required
+          /><br />
+
+          <label for="usersMessage"> Your Message </label>
+          <textarea
+            name="usersMessage"
+            id="usersMessage"
+            placeholder="Your Messsage"
+            required
+          ></textarea
+          ><br />
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <!-- additional empty section messages added -->
+      <section id="messages">
+        <h2>Messages</h2>
+        <ul></ul>
+      </section>
     </main>
+    <footer></footer>
     <script src="js/index.js"></script>
   </body>
 </html>
