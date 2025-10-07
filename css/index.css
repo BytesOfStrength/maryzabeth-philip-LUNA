@@ -354,6 +354,25 @@ form button[type="submit"]:focus-visible {
   background-color: #e2aeae;
 }
 
+/*============ADDED FOR LESSON 13============= */
+/* styling for whole list */
+#repo-list {
+  display:flex;
+  flex-wrap: wrap;
+  gap:1em;
+  list-style: none;
+  padding:0;
+}
+/* styling for each list item */
+.repo-item { 
+  padding:0.5em;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  flex: 1 1 200px;
+  text-align: center;
+
+}
+
 /* For Tablets screens 768px or larger */
 
 @media (min-width: 768px) {
@@ -447,6 +466,18 @@ form button[type="submit"]:focus-visible {
     font-size: 1.5rem;
     padding: 0.8em 1.5em;
   }
+
+/*============ADDED FOR LESSON 13============= */
+/* styling for whole list */
+#repo-list {
+  flex-direction:column;
+}
+/* styling for each list item */
+.repo-item { 
+  margin: 1em;
+  flex: 1;
+}
+
 }
 /* For Desktops with screens 1140px or larger */
 @media (min-width: 1140px) {
