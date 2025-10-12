@@ -38,12 +38,14 @@ for (let i = 0; i < skills.length; i++) {
 function toggleMessageSection() {
   const messageSection = document.getElementById("messages");
   const messageList = messageSection.querySelector("ul");
+
   if (messageList.children.length === 0) {
     messageSection.style.display = "none";
   } else {
     messageSection.style.display = "block";
   }
 }
+
 toggleMessageSection();
 
 const messageForm = document.querySelector("form[name=leave_message]");
@@ -111,3 +113,53 @@ messageForm.addEventListener("submit", (event) => {
   // clear form using reset method
   messageForm.reset();
 });
+
+//changes added for LESSON -13
+// =====ADDED FOR LESSON 13=========
+// using fetch to use its default method of GET to get author's github repos
+
+fetch("https://api.github.com/users/BytesOfStrength/repos")
+  // GET the response(fetch has built in GET method)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Request Failed");
+    }
+
+    //Parse response as JSON don't use JSON.Parse
+    return response.json();
+  })
+  // Get data as in the repositories and add to html doc
+  .then((data) => {
+    const repositories = data;
+    console.log("Github respositories array = ", repositories);
+    const projectSection = document.getElementById("Projects");
+    const projectList = projectSection.querySelector("ul");
+// clear content of poject list 
+    projectList.innerHTML ="";
+// create for loop to iterate over Github repositories Array
+    for (let i = 0; i < repositories.length; i++) {
+      let repo = repositories[i];
+      console.log(repo.name);
+      let project = document.createElement("li");
+      project.className = "repo-item";
+      project.innerText = repo.name;
+      if (!repo.fork) { 
+        projectList.appendChild(project);
+      }    
+    }
+  })
+  // chain catch() to handle errors
+  .catch((error) => {
+    console.error("Error", error);
+    const projectSection = document.getElementById("Projects");
+
+// display friendly error message to user if fetch fails for server error
+    const errorMessage=document.createElement("p");
+    errorMessage.innerHTML="Error loading projects. Please refer to console.";
+    errorMessage.className="error-message";
+    projectSection.appendChild(errorMessage);
+    
+  });
+
+
+
