@@ -50,7 +50,7 @@ toggleMessageSection();
 
 const messageForm = document.querySelector("form[name=leave_message]");
 
-/*LESSON 12Add event listener to print out on console usersName, email, message when user clicks “submit” button*/
+/*Add event listener to print out on console usersName, email, message when user clicks “submit” button*/
 
 messageForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -89,6 +89,27 @@ messageForm.addEventListener("submit", (event) => {
   newMessage.appendChild(messageTextSpan); */
 
   newMessage.innerHTML = `<a href= "mailto:${usersEmail}">${usersName}</a>:<span>${usersMessage}</span>`;
+
+  // create edit button to edit user's message
+  const editButton = document.createElement("button");
+  editButton.innerText = "edit";
+  editButton.className = "edit-btn";
+  editButton.type = "button";
+
+  // add event listener
+  /*add click event listener to edit the message*/
+  editButton.addEventListener("click", function () {
+    // find the message portion
+    const messageSpan = newMessage.querySelector("span");
+    // prompt user for new message
+    const newText = prompt("Edit your Message: ", messageSpan.innerText);
+    // update message
+    if (newText !== null) {
+      messageSpan.innerText = newText;
+    }
+  });
+
+  newMessage.appendChild(editButton);
 
   // create an element remove button, set innerText to remove.
   const removeButton = document.createElement("button");
@@ -134,18 +155,26 @@ fetch("https://api.github.com/users/BytesOfStrength/repos")
     console.log("Github respositories array = ", repositories);
     const projectSection = document.getElementById("Projects");
     const projectList = projectSection.querySelector("ul");
-// clear content of poject list 
+// clear content of project list 
     projectList.innerHTML ="";
 // create for loop to iterate over Github repositories Array
     for (let i = 0; i < repositories.length; i++) {
       let repo = repositories[i];
       console.log(repo.name);
       let project = document.createElement("li");
+      const repoLink=document.createElement("a");
+      repoLink.href = repo.html_url;
+      repoLink.target = "_blank";
+      repoLink.rel = "noopener noreferrer";
       project.className = "repo-item";
-      project.innerText = repo.name;
-      if (!repo.fork) { 
-        projectList.appendChild(project);
-      }    
+      repoLink.textContent=repo.name;
+      project.className = "repo-item";
+      // project.innerText = repo.name;\
+      // need to include forked debugging assignment 
+      // if (!repo.fork) { 
+      project.appendChild(repoLink);
+      projectList.appendChild(project);
+          
     }
   })
   // chain catch() to handle errors
@@ -161,5 +190,22 @@ fetch("https://api.github.com/users/BytesOfStrength/repos")
     
   });
 
+  // get email span element 
+  const emailSpan = document.getElementById("email-contact");
 
+  // check for element 
+
+  if (emailSpan) {
+    const confusedText = emailSpan.textContent;
+    const realEmail = confusedText.replace(' (at) ', '@')
+    .replace(' (dot) ', ".");
+
+    const mailtoLink = document.createElement("a");
+
+    mailtoLink.href = "mailto:" + realEmail;
+    mailtoLink.textContent = "Email Me";
+    emailSpan.textContent =" ";
+    emailSpan.appendChild(mailtoLink);
+  }
+  
 
