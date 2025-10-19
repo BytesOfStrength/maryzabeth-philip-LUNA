@@ -10,6 +10,7 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   max-width: 100%;
   margin: 0;
+  font-size: 16px
 }
 
 header {
@@ -47,13 +48,12 @@ nav ul a {
 }
 
 nav a:visited {
-  /* color: #a7abde; */
   color: #4c0258;
 }
 
 nav ul a:hover,
 nav ul a:focus-visible {
-  color: #ff551c;
+  color: #ff4203;
   background-color: #e6d6e6;
 }
 
@@ -67,6 +67,7 @@ h2 {
   font-weight: 700;
   font-size: 1rem;
   color: rgb(203, 26, 26);
+  margin-block-end: 1em;
 }
 
 .my-name {
@@ -79,8 +80,10 @@ h2 {
 #Experience,
 #Skills,
 #Projects,
-#Connect {
-  scroll-margin-top: 10em;
+#Connect,
+#leave-a-message {
+  /* scroll-margin-top: 10em; */
+  scroll-margin-top: 280px;
 }
 
 #About {
@@ -116,9 +119,9 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 2em;
+  gap: 3em;
   align-content: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 #Skills li {
@@ -299,7 +302,7 @@ form button[type="submit"] {
   border-radius: 7px;
   cursor: pointer;
   font-size: 1.125rem;
-  width: 100%;
+  width: 80%;
 }
 form button[type="submit"]:hover,
 form button[type="submit"]:focus-visible {
@@ -314,47 +317,52 @@ form button[type="submit"]:focus-visible {
   border-radius: 7px;
 }
 
-#messages ul {
+ #msg-unordered-list{
   list-style: none;
   padding: 0;
-}
-
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-items: center;
+} 
 #messages li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color:#b5abd5e5;  */
+  background-color:#f8f8f8e5;  
   color: rgb(164, 15, 110);
-  /* border: 2px solid #ddd; */
+  border: 2px solid #ddd; 
   border-radius: 7px;
   padding: 0.75em;
   margin-block: 0.5em;
-  gap: 1em;
+  gap:0.25em;
 }
 /* style email and name links */
 #messages li a {
   text-decoration: underline;
   font-weight: bold;
   color: #a40f6e;
-  margin-inline-end: 0.5em;
+  margin-inline-end: 1em;
+  /* font-size: 1rem; */
 }
 
-/* remove button styling */
+/* remove button and edit button styling*/
 /* #messages li button*/
-#messages button.remove-button {
+#messages button.remove-button , #messages button.edit-btn{
   background-color: #f2d3f8;
   color: black;
-  border-radius: 20px;
-  font-size: 1.25rem;
-  padding: 0.5em 0.8em;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  padding: 0.5em 0.5em;
   flex-shrink: 0;
+  padding: 0.3em 0.6em;
+  cursor:pointer;
+
 }
 #messages li:hover,
 #messages li:focus-visible {
   background-color: #e2aeae;
 }
-
-/*============ADDED FOR LESSON 13============= */
 /* styling for whole list */
 #repo-list {
   display:flex;
@@ -377,15 +385,16 @@ form button[type="submit"]:focus-visible {
 
 @media (min-width: 768px) {
   body {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     color: darkblue;
   }
   .container-nav {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     width: 90%;
     margin: 0 auto;
   }
+
   nav ul {
     display: flex;
     flex-direction: row;
@@ -393,7 +402,9 @@ form button[type="submit"]:focus-visible {
     margin-block-end: 1.25em;
     padding: 0.625em 0;
     justify-content: space-between;
+
   }
+
   h1 {
     font-size: 2rem;
     font-weight: bold;
@@ -410,9 +421,9 @@ form button[type="submit"]:focus-visible {
     justify-content: space-between;
   }
 
-  .experience-entry {
+   .experience-entry {
     flex-direction: row;
-  }
+  } 
   .general-experience-name {
     margin: 0.15em;
   }
@@ -432,6 +443,16 @@ form button[type="submit"]:focus-visible {
     padding-left: 0;
     gap: 1.25em;
   }
+  .connectList li {
+    background-color: lightblue;
+    padding: 1.25em;
+    border: solid 10px aliceblue;
+    border-radius: 7px;
+    margin: 1.75em 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
   /* LESSON 12 STYLE CHANGES FOR FORM and  BUTTONS */
 
   form textarea {
@@ -448,27 +469,32 @@ form button[type="submit"]:focus-visible {
   form[name="leave_message"] {
     margin: 2.5em;
     gap: 1em;
-  }
-  form[name="leave_message"] {
     max-width: 600px;
-    /* margin-inline: auto;
-    margin-block-start: 1em; */
-  }
-  form button[type="submit"] {
-    width: fit-content;
-    align-items: flex-end;
-    font-size: 1.5rem;
+    margin-inline: auto;
+    margin-block-start: 1em;
   }
 
-  button.remove-button {
+  form button[type="submit"] {
     width: fit-content;
-    flex-shrink: 0;
-    font-size: 1.5rem;
-    padding: 0.8em 1.5em;
+    /* align-items: flex-end; */
+    font-size: 1.125rem;
+    margin-inline:0;
+  }
+
+  #messages li {
+    font-size: 1.125rem;
+  }
+  #messages button.remove-button, #messages button.edit-btn {
+    width: fit-content;
+    font-size: 1rem;
+    padding: 0.4em 0.7em;
+    align-items: flex-end;
+
   }
 
 /*============ADDED FOR LESSON 13============= */
 /* styling for whole list */
+
 #repo-list {
   flex-direction:column;
 }
@@ -507,15 +533,15 @@ form button[type="submit"]:focus-visible {
   nav ul a:hover {
     text-decoration: underline;
     text-decoration-color: #68007a;
-    background-color: #f9e1a8;
+    background-color: #f7f1e1;
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 56px;
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 44px;
     font-weight: bold;
     font-style: oblique;
   }
@@ -550,11 +576,22 @@ form button[type="submit"]:focus-visible {
     font-size: 1.5rem;
   }
   form button[type="submit"] {
-    font-size: 2rem;
+    font-size: 24px;
+    padding: 18px 40px;
+
     font-weight: bolder;
   }
-  button.remove-button {
-    font-size: 2rem;
+  #messages button.remove-button, #messages button.edit-btn {
+    font-size: 22px;
     font-weight: bolder;
+    padding: 10px 18px;
+  }
+   #messages li {
+    font-size: 24px;
+    padding:1.2em;
+  }
+  #message li span{
+    font-size: 20px;
+    color:#000;
   }
 }
